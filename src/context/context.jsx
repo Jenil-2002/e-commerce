@@ -71,12 +71,13 @@ export const Globalstate = ({ children }) => {
     })()
   }, []);
 
-  async function handleSubmit(e) {
+  async function handleCategory(e, category) {
+    console.log(category)
     e.preventDefault();
     setloading(true);
     try {
       const res = await axios.get(
-        `https://fakestoreapi.com/products/category/${searchParam}`
+        `https://fakestoreapi.com/products/category/${category}`
       );
       if (res?.status === 200) {
         setsearchParam("");
@@ -132,7 +133,7 @@ export const Globalstate = ({ children }) => {
         loading,
         productList,
         setsearchParam,
-        handleSubmit,
+        handleCategory,
         productDetailsData,
         setProductDetailsData,
         handleAddToFavorite,

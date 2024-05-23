@@ -105,8 +105,8 @@ export default function Details() {
               className="img-zoom-lens"
               style={{
                 position: "absolute",
-                top: mousePosition.y - 100, // Adjust to center the lens
-                left: mousePosition.x + 100, // Adjust to center the lens
+                top: mousePosition.y - 90, // Adjust to center the lens
+                left: mousePosition.x + 40, // Adjust to center the lens
                 width: "200px", // Adjust size as needed
                 height: "200px", // Adjust size as needed
                 border: "1px solid #000",

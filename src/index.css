@@ -195,8 +195,11 @@ input[type="number"] {
 .dropdown-toggle { outline: 0; }
 
 .btn-toggle {
-  padding: .25rem .5rem;
-  font-weight: 600;
+  /* border: 1px solid red !important; */
+  /* padding: 0px !important; */
+
+  /* padding: .25rem .5rem; */
+  /* font-weight: 600; */
   color: var(--bs-emphasis-color);
   background-color: transparent;
 }
@@ -206,7 +209,8 @@ input[type="number"] {
   background-color: var(--bs-tertiary-bg);
 }
 
-.btn-toggle::before {
+.btn-toggle::after {
+  margin-left: 5px;
   width: 1.25em;
   line-height: 0;
   content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
@@ -214,14 +218,14 @@ input[type="number"] {
   transform-origin: .5em 50%;
 }
 
-[data-bs-theme="dark"] .btn-toggle::before {
+[data-bs-theme="dark"] .btn-toggle::after {
   content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%28255,255,255,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
 }
 
 .btn-toggle[aria-expanded="true"] {
   color: rgba(var(--bs-emphasis-color-rgb), .85);
 }
-.btn-toggle[aria-expanded="true"]::before {
+.btn-toggle[aria-expanded="true"]::after {
   transform: rotate(90deg);
 }
 
@@ -237,4 +241,30 @@ input[type="number"] {
 
 .scrollarea {
   overflow-y: auto;
+}
+
+
+/* RONAK Added Sidebar CSS  - Start*/
+.show {
+  visibility: visible;
+}
+/* RONAK Added Sidebar CSS  - End*/
+
+.navbar{
+  background-color: #ddd;
+  z-index: 99;
+}
+
+.sidebar{
+  border-radius: 10px;
+  border: 1px solid #555;
+}
+
+.sidebar-heading{
+  padding: 10px;
+  text-align: left !important;
+}
+
+.body-section{
+  z-index: -1;
 }
