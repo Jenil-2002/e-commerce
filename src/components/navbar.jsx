@@ -13,6 +13,7 @@ export default function Navbar() {
       <h2 className="text-2xl font-semibold">
         <NavLink
           to={"/"}
+          onClick={getProducts} 
           className="text-red hover:text-gray-700 duration-300 px-4"
         >
           E-Commerce

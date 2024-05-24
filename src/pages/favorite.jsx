@@ -19,7 +19,7 @@ export default function Favorite() {
 //  },[])
 
   return (
-    <div className="py-8 container mx-auto flex flex-wrap justify-center gap-10">
+    <div className="py-8 mt-5 container mx-auto flex flex-wrap justify-center gap-10">
       {favoritesList && favoritesList.length > 0 ? (
         favoritesList.map((item, index) => (
           <ProductCard item={item} key={index} />

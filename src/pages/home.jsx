@@ -16,7 +16,7 @@ export default function Home() {
             <div className="flex-shrink-0 p-3 ">
               <Link
                 to="/"
-                className="d-flex align-items-center p-3 mb-3 link-body-emphasis text-decoration-none border-bottom"
+                className="d-flex align-items-center p-3 mb-3 link-body-emphasis text-decoration-none border-bottom border-dark"
               >
                 {/* <svg className="bi pe-none me-2" width="30" height="24">
                   <use xlinkHref="#bootstrap"></use>
@@ -30,7 +30,7 @@ export default function Home() {
                     onClick={(event) => handleCategory(event, event.target.name)}
                     className="btn link-body-emphasis d-inline-flex text-decoration-none rounded"
                   >
-                    electronics
+                    Electronics
                   </Link>
                 </li>
                 <li>
@@ -39,7 +39,7 @@ export default function Home() {
                     onClick={(event) => handleCategory(event, event.target.name)}
                     className="btn link-body-emphasis d-inline-flex text-decoration-none rounded"
                   >
-                    jewellery
+                    Jewellery
                   </Link>
                 </li>
                 <li className="mb-1">

@@ -1,60 +1,25 @@
-import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext } from "react";
 import { Button, Card } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
 import GlobalContext from "../context/context";
-import {
-  BsCartDashFill,
-  BsCartPlusFill,
-  BsHeart,
-  BsHeartFill,
-} from "react-icons/bs";
-import { FaCartArrowDown, FaCartPlus, FaEye } from "react-icons/fa";
-import { FaCartShopping } from "react-icons/fa6";
+import { BsHeart, BsHeartFill } from "react-icons/bs";
+import { FaEye } from "react-icons/fa";
 import { TfiShoppingCart, TfiShoppingCartFull } from "react-icons/tfi";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
-export default function ProductCard({ item }) {
+export default function CartProductCard({ item }) {
   const location = useLocation();
   const {
     favoritesList,
     handleAddToFavorite,
     quantity,
-    setQuantity,
-    setCartList,
     handleQuantityChange,
-    productDetailsData,
-    setProductDetailsData,
     cartList,
     handleAddToCart,
   } = useContext(GlobalContext);
 
   return (
-    /*      <div className="flex w-25 overflow-hidden p-5 bg-white/75 shadow-xl gap-5 border-2 rounded-2xl border-white">
-      <div className="h-40 flex justify-center overflow-hidden items-center rounded-xl">
-        <img src={item?.image} alt="recrpe item" className="block w-full" />
-      </div>
-      <div>
-        <span className="text-sm text-cyan-700 font-medium">
-          {item?.title}
-        </span>
-        <h3 className="font-bold text-xl truncate text-black">
-          ${item?.price}
-        </h3>
-        <p className="font-bold truncate text-black">
-          <label>Rating: </label>
-          {item?.rating?.rate}
-        </p>
-        <Link
-          to={`/products/${item?.id}`}
-          className="text-sm p-3 mt-5 px-8 rounded-lg uppercase font-medium tracking-wider inline-block shadow-md bg-black text-white"
-        >
-         View Product
-        </Link>
-      </div>
-    </div> */
-    // <div className="flex w-25 overflow-hidden p-5 bg-white/75 shadow-xl gap-5 border-2 rounded-2xl border-white">
-    <Card className="flex col-2 p-2 product-card overflow-hidden bg-white/75 shadow-xl border-2 rounded-2xl border-white">
+    /*     <Card className="flex col-2 p-2 product-card overflow-hidden bg-white/75 shadow-xl border-2 rounded-2xl border-white">
       <div className="p-0 h-40 flex justify-center overflow-hidden items-center rounded-xl">
         <div className="col-6">
           <Card.Img variant="top" src={item?.image} className="block w-full" />
@@ -121,7 +86,64 @@ export default function ProductCard({ item }) {
           </button>
         </div>
       </Card.Body>
-    </Card>
-    // </div>
+    </Card> */
+    <tr key={item?.id}>
+      <td>
+        <Link to={`/products/${item?.id}`}>
+          <img
+            src={item?.image}
+            alt="productImg"
+          />
+        </Link>
+      </td>
+      <td>{item?.title}</td>
+      <td className="price-new">${item?.price}</td>
+      <td>
+        <div class="input-group mb-3">
+          <input
+            type="number"
+            value={quantity[item?.id]?.qty || 1}
+            onChange={(e) => handleQuantityChange(e.target.value, item)}
+            min="1" // Set minimum quantity allowed
+            className="quantity-input w-50 form-control"
+            id="qty"
+          />
+        </div>
+        {/* <input
+            type="number"
+            id="qty"
+            name="qty"
+            min="1"
+            max={props.product.maxQuantity}
+            step="1"
+            // defaultValue="1"
+            value={inputQty}
+            onChange={onChangeQuantity}
+          /> */}
+      </td>
+      <td className="subTotalShow">{(item?.price*quantity[item?.id]?.qty).toFixed(2)}</td>
+      <td>
+        {/* <Button
+            variant="dark"
+            size="sm"
+            className="ms-2"
+            onClick={(e) => deleteFromCart(e, props.product.id)}
+          >
+            <RiDeleteBin6Line />
+          </Button> */}
+        <Button
+          variant="dark"
+          size="sm"
+          className="ms-2"
+          onClick={(e) => handleAddToCart(item)}
+        >
+          {cartList &&
+            cartList.length > 0 &&
+            cartList.findIndex((product) => product.id === item?.id) !== -1 && (
+              <RiDeleteBin6Line size={20} />
+            )}
+        </Button>
+      </td>
+    </tr>
   );
 }
