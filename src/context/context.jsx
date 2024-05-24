@@ -21,6 +21,9 @@ export const Globalstate = ({ children }) => {
         return updatedState;
       })
     }else{
+      if(value > 10 || value <= 0){
+        value = 1;
+      }
       setQuantity((prevState)=>{
         return{
           ...prevState,

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import GlobalContext from "../context/context";
 import ProductCard from "../components/productCard";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Button, Container, Row, Table } from "react-bootstrap";
 import CartProductCard from "../components/cartProductCard";
 
@@ -52,11 +52,11 @@ export default function Cart() {
               <Table bordered hover responsive="sm">
                 <thead>
                   <tr>
-                    <th>Product Img</th>
+                    <th>Image</th>
                     <th>Name</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Sub Total</th>
+                    <th>Price($)</th>
+                    <th className="text-center">Quantity <br /><p style={{fontSize:"10px"}}>Max-10</p></th>
+                    <th>Sub Total($)</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -75,19 +75,19 @@ export default function Cart() {
                 <h5 className="text-left mb-4 pb-2">Cart Price</h5>
                 <div className="d-flex justify-content-between mb-3">
                   <h6 className="fw-normal">Tax :</h6>
-                  <span>{tax}$</span>
+                  <span>${tax}</span>
                 </div>
                 <div className="d-flex justify-content-between mb-4">
                   <h6 className="fw-normal">SubTotal Price :</h6>
-                  <span>{subTotalPrice}$</span>
+                  <span>${subTotalPrice}</span>
                 </div>
                 <div className="d-flex justify-content-between fw-bold">
                   <h6>Total Price :</h6>
-                  <span>{totalPrice}$</span>
+                  <span>${totalPrice}</span>
                 </div>
-                <Button variant="dark" size="md" className="mt-4 w-100">
+                <Link to="https://buy.stripe.com/test_fZeg2i6158gYas09AA" variant="dark" size="md" className="btn btn-dark mt-4 w-100">
                   Pay Now
-                </Button>
+                </Link>
               </div></>
           ) : (
             <div>

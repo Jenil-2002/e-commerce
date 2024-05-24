@@ -97,14 +97,15 @@ export default function CartProductCard({ item }) {
         </Link>
       </td>
       <td>{item?.title}</td>
-      <td className="price-new">${item?.price}</td>
+      <td className="price-new">{item?.price}</td>
       <td>
         <div class="input-group mb-3">
           <input
             type="number"
             value={quantity[item?.id]?.qty || 1}
             onChange={(e) => handleQuantityChange(e.target.value, item)}
-            min="1" // Set minimum quantity allowed
+            min={1} // Set minimum quantity allowed
+            max={10}
             className="quantity-input w-50 form-control"
             id="qty"
           />

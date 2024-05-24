@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import GlobalContext from "../context/context";
 import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
+import { MdOutlineLabel } from "react-icons/md";
 
 export default function Details() {
   const { id } = useParams();
@@ -88,13 +89,26 @@ export default function Details() {
     setShowZoomBox(false);
   };
 
+  const toCamelCase = (str) => {
+    if (!str) return ""; // Handle null or undefined input
+    const words = str.trim().toLowerCase().split(" "); // Trim leading/trailing spaces and split by space
+    const camelCaseString = words
+      .map((word, index) => {
+        return index === 0
+          ? word.charAt(0).toUpperCase() + word.slice(1)
+          : word.charAt(0).toUpperCase() + word.slice(1); // Capitalize first character of each word
+      })
+      .join(" "); // Join the words back together
+    return camelCaseString;
+  };
+
   return (
     <div className="container mt-5 py-10 grid grid-cols-1 lg:grid-cols-2 gap-10">
       <div className="row-start-2 lg:row-start-auto relative">
         <div className="rounded-xl group productImage">
           <img
             src={productDetailsData?.image}
-            className="w-50 h-50  block rounded-xl"
+            className="w-80 h-80  block rounded-xl"
             alt="Zoomable"
             onMouseMove={handleMouseMove}
             onMouseEnter={handleMouseEnter}
@@ -110,7 +124,7 @@ export default function Details() {
                 width: "200px", // Adjust size as needed
                 height: "200px", // Adjust size as needed
                 border: "1px solid #000",
-                backgroundColor: 'rgba(255, 255, 255, 0.5)', // Background color with transparency
+                backgroundColor: "rgba(255, 255, 255, 0.5)", // Background color with transparency
                 opacity: 0.5, // Opacity for transparency
                 pointerEvents: "none",
               }}
@@ -151,10 +165,13 @@ export default function Details() {
         )}
       </div>
       <div className="flex flex-col gap-3">
-        <span className="text-sm text-cyan-700 font-medium">
+        <ul className="tags">
+          <li>{toCamelCase(productDetailsData?.category)}</li>
+        </ul>
+        {/* <span className="text-sm text-cyan-700 font-medium">
           {productDetailsData?.category}
-        </span>
-        <h3 className="font-bold text-2xl truncate text-black">
+        </span> */}
+        <h3 className="font-bold text-4xl text-black">
           {productDetailsData?.title}
         </h3>
         <span className="text-xl text-blue-500 font-medium">
@@ -183,7 +200,7 @@ export default function Details() {
           {/* <ul className="flex flex-col gap-3">
             {recipeDetailsData?.recipe?.ingredients.map((ingredient, index) => (
               <li key={index}> */}
-          <span className="text-xl font-semibold text-grey align-super">
+          <span className="text-lg font-semibold text-grey align-super">
             {productDetailsData?.description}
           </span>
           {/* <span className="text-2xl font-semibold text-black">
