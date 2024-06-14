@@ -160,6 +160,7 @@ export default function Details() {
               backgroundSize: backgroundSize,
               backgroundPosition: backgroundPosition,
               backgroundRepeat: "no-repeat",
+              zIndex: 99999,
             }}
           ></div>
         )}

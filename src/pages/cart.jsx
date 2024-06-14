@@ -47,31 +47,36 @@ export default function Cart() {
         <Row>
           {cartList && cartList.length > 0 ? (
             <>
-            <h5 className="text-left mb-4 ps-2">Cart List</h5>
-            <div className="col-9 cartShow">
-              <Table bordered hover responsive="sm">
-                <thead>
-                  <tr>
-                    <th>Image</th>
-                    <th>Name</th>
-                    <th>Price($)</th>
-                    <th className="text-center">Quantity <br /><p style={{fontSize:"10px"}}>Max-10</p></th>
-                    <th>Sub Total($)</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {cartList &&
-                    cartList.length > 0 &&
-                    cartList.map((item, index) => (
-                      <CartProductCard
-                        item={item}
-                        isWish={false}
-                        isCart={true} />
-                    ))}
-                </tbody>
-              </Table>
-            </div><div className="col-3 cartSum boxShadaw bg-light p-4 border h-50">
+              <h5 className="text-left mb-4 ps-2">Cart List</h5>
+              <div className="col-lg-9 cartShow">
+                <Table bordered hover responsive="sm">
+                  <thead>
+                    <tr>
+                      <th>Image</th>
+                      <th>Name</th>
+                      <th>Price($)</th>
+                      <th className="text-center">
+                        Quantity <br />
+                        <p style={{ fontSize: "10px" }}>Max-10</p>
+                      </th>
+                      <th>Sub Total($)</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {cartList &&
+                      cartList.length > 0 &&
+                      cartList.map((item, index) => (
+                        <CartProductCard
+                          item={item}
+                          isWish={false}
+                          isCart={true}
+                        />
+                      ))}
+                  </tbody>
+                </Table>
+              </div>
+              <div className="right-10 col-lg-3 cartSum boxShadaw bg-light p-4 border h-50">
                 <h5 className="text-left mb-4 pb-2">Cart Price</h5>
                 <div className="d-flex justify-content-between mb-3">
                   <h6 className="fw-normal">Tax :</h6>
@@ -85,10 +90,16 @@ export default function Cart() {
                   <h6>Total Price :</h6>
                   <span>${totalPrice}</span>
                 </div>
-                <Link to="https://buy.stripe.com/test_fZeg2i6158gYas09AA" variant="dark" size="md" className="btn btn-dark mt-4 w-100">
+                <Link
+                  to="https://buy.stripe.com/test_fZeg2i6158gYas09AA"
+                  variant="dark"
+                  size="md"
+                  className="btn btn-dark mt-4 w-100"
+                >
                   Pay Now
                 </Link>
-              </div></>
+              </div>
+            </>
           ) : (
             <div>
               <p className="lg:text-4xl text-xl text-center text-black font-extrabold">

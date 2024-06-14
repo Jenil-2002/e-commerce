@@ -49,7 +49,7 @@ export default function CartProductCard({ item }) {
         </div>
         {location.pathname.includes("/cart") && (
           <>
-            <div class="input-group mb-3">
+            <div className="input-group mb-3">
               <input
                 type="number"
                 value={quantity[item?.id]?.qty || 1}
@@ -58,7 +58,7 @@ export default function CartProductCard({ item }) {
                 className="quantity-input w-50 form-control"
                 id="qty"
               />
-              <span class="input-group-text" id="qty">
+              <span className="input-group-text" id="qty">
                 QTY
               </span>
             </div>
@@ -99,7 +99,7 @@ export default function CartProductCard({ item }) {
       <td>{item?.title}</td>
       <td className="price-new">{item?.price}</td>
       <td>
-        <div class="input-group mb-3">
+        <div className="input-group mb-3">
           <input
             type="number"
             value={quantity[item?.id]?.qty || 1}

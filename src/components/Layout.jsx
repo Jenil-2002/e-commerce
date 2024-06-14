@@ -1,14 +1,14 @@
 import React from "react";
-import Header from "./Header";
 import { Outlet } from "react-router-dom";
-import Footer from "./Footer";
+import Navbar from "./navbar";
 
 export default function Layout() {
   return (
-    <>
-      <Header />
+    <div className="min-h-screen p-6 bg-white text-gray-600 text-lg">
+
+    <Navbar />
       <Outlet />
-      <Footer />
-    </>
+      </div>
+
   );
 }

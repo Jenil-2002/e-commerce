@@ -8,7 +8,7 @@ export default function Navbar() {
 
     const location = useLocation();
   return (
-    <nav className="fixed top-0 left-0 w-full py-2 container-fluid mx-auto flex flex-col lg:flex-row justify-between items-center gap-3 lg:gap-0 navbar">
+    <nav className="fixed top-0 left-0 w-full py-2 container-fluid mx-auto flex lg:flex-row justify-between items-center gap-3 lg:gap-0 navbar">
     {/* <nav className="flex justify-between items-center py-8 container mx-auto flex-col lg:flex-row gap-5 lg:gap-0"> */}
       <h2 className="text-2xl font-semibold">
         <NavLink
