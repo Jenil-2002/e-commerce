@@ -20,13 +20,9 @@ export default function ProductCard({ item }) {
     favoritesList,
     handleAddToFavorite,
     quantity,
-    setQuantity,
-    setCartList,
     handleQuantityChange,
-    productDetailsData,
-    setProductDetailsData,
     cartList,
-    handleAddToCart,
+    handleCart,
   } = useContext(GlobalContext);
 
   return (
@@ -108,7 +104,7 @@ export default function ProductCard({ item }) {
             <FaEye size={23} color="white" />
           </Link>
           <button
-            onClick={() => handleAddToCart(item)}
+            onClick={() => handleCart(item)}
             className="p-2 m-2 bg-yellow-500 rounded-lg "
           >
             {cartList &&

@@ -9,20 +9,23 @@ import Authentication from "./Authentication";
 
 function App() {
   return (
-      //  <Navbar /> 
+    //  <Navbar />
     <Routes>
-      <><Route
+      <Route
         path="/"
-        element={<Authentication>
-          <Layout />
-        </Authentication>}
+        element={
+          // <Authentication>
+            <Layout />
+          // </Authentication>
+        }
       >
         <Route index element={<Home />} />
         {/* <Route path="/" element={<Home />} /> */}
         <Route path="/favorite" element={<Favorite />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/products/:id" element={<Details />} />
-      </Route><Route path="/login" element={<Login />} /></>
+      </Route>
+      <Route path="/login" element={<Login />} />
     </Routes>
   );
 }

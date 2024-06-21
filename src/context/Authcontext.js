@@ -4,7 +4,7 @@ const AuthContext = createContext(null);
 export const AuthProvider = ({ children }) => {
     const navigate = useNavigate();
     const location = useLocation();
-    const redirectPath = location.state?.path || "/";
+    // const redirectPath = location.state?.path || "/";
     const [user, setUser] = useState({
         username: "",
         permissions: [],

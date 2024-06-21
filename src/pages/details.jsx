@@ -10,8 +10,6 @@ export default function Details() {
   const {
     productDetailsData,
     setProductDetailsData,
-    cartList,
-    handleAddToCart,
   } = useContext(GlobalContext);
 
   async function getProductDetails() {
@@ -183,7 +181,7 @@ export default function Details() {
         </div>
         {/* <div>
           <button
-            onClick={() => handleAddToCart(productDetailsData)}
+            onClick={() => handleCart(productDetailsData)}
             className="p-3 px-8 rounded-lg text-sm uppercase font-medium tracking-wider mt-3 inline-block shadow-md bg-black text-white"
           >
             {cartList &&

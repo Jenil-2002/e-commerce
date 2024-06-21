@@ -15,9 +15,8 @@ export default function CartProductCard({ item }) {
     quantity,
     handleQuantityChange,
     cartList,
-    handleAddToCart,
+    handleCart,
   } = useContext(GlobalContext);
-
   return (
     /*     <Card className="flex col-2 p-2 product-card overflow-hidden bg-white/75 shadow-xl border-2 rounded-2xl border-white">
       <div className="p-0 h-40 flex justify-center overflow-hidden items-center rounded-xl">
@@ -73,7 +72,7 @@ export default function CartProductCard({ item }) {
             <FaEye size={23} color="white" />
           </Link>
           <button
-            onClick={() => handleAddToCart(item)}
+            onClick={() => handleCart(item)}
             className="p-2 m-2 bg-yellow-500 rounded-lg "
           >
             {cartList &&
@@ -136,7 +135,7 @@ export default function CartProductCard({ item }) {
           variant="dark"
           size="sm"
           className="ms-2"
-          onClick={(e) => handleAddToCart(item)}
+          onClick={(e) => handleCart(item)}
         >
           {cartList &&
             cartList.length > 0 &&

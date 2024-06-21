@@ -4,10 +4,11 @@ import ProductCard from "../components/productCard";
 import { Link, useLocation } from "react-router-dom";
 import { Button, Container, Row, Table } from "react-bootstrap";
 import CartProductCard from "../components/cartProductCard";
+import { useSelector } from "react-redux";
 
 export default function Cart() {
   const { cartList, quantity } = useContext(GlobalContext);
-
+  const cart = useSelector((state)=>state?.cart);
   const [subTotalPrice, setsubTotalPrice] = useState(0);
   const [tax, setTax] = useState(2);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -32,7 +33,7 @@ export default function Cart() {
     });
     setsubTotalPrice(amount.toFixed(2));
     setTotalPrice((amount + tax).toFixed(2));
-    if (cartList.length === 0) {
+    if (cart.length === 0) {
       setTax(0);
       // let cartShow = document.querySelector(".cartShow");
       // let table = document.querySelector("Table");
@@ -45,7 +46,7 @@ export default function Cart() {
     <div className="productSlider mb-5 mt-5">
       <Container>
         <Row>
-          {cartList && cartList.length > 0 ? (
+          {cart && cart.length > 0 ? (
             <>
               <h5 className="text-left mb-4 ps-2">Cart List</h5>
               <div className="col-lg-9 cartShow">
@@ -64,9 +65,9 @@ export default function Cart() {
                     </tr>
                   </thead>
                   <tbody>
-                    {cartList &&
-                      cartList.length > 0 &&
-                      cartList.map((item, index) => (
+                    {cart &&
+                      cart.length > 0 &&
+                      cart.map((item, index) => (
                         <CartProductCard
                           item={item}
                           isWish={false}
@@ -114,8 +115,8 @@ export default function Cart() {
 }
 /*  return (
     <div className="py-8 container mx-auto flex flex-wrap justify-center gap-10">
-      {cartList && cartList.length > 0 ? (
-        cartList.map((item, index) => (
+      {cartList && cart.length > 0 ? (
+        cart.map((item, index) => (
           <ProductCard item={item} key={index} />
         ))
       ) : (

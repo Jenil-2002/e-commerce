@@ -1,6 +1,8 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
+import { addToCart, removeToCart } from "../Redux/actions/cartActions";
 
 const GlobalContext = createContext({});
 
@@ -12,6 +14,10 @@ export const Globalstate = ({ children }) => {
   const [favoritesList, setfavoritesList] = useState([]);
   const [cartList, setCartList] = useState([]);
   const [quantity, setQuantity] = useState(1); // Default quantity is 1
+
+  const dispatch = useDispatch();
+  const cart = useSelector((state)=>state?.cart);
+
 
   const handleQuantityChange = (value , item, isRemove=false) => {
     if(isRemove){
@@ -62,9 +68,9 @@ export const Globalstate = ({ children }) => {
       console.log(error);
     }
   }
-  useEffect(() => {
+/*   useEffect(() => {
     getProducts();
-    /* global bootstrap: false */
+
     (() => {
       'use strict'
       const tooltipTriggerList = Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
@@ -72,7 +78,7 @@ export const Globalstate = ({ children }) => {
         new bootstrap.Tooltip(tooltipTriggerEl)
       })
     })()
-  }, []);
+  }, []); */
 
   async function handleCategory(e, category) {
     console.log(category)
@@ -111,8 +117,8 @@ export const Globalstate = ({ children }) => {
     setfavoritesList(cpyFavoritesList);
   }
 
-  function handleAddToCart(getCurrentItem) {
-    let cpyCartList = [...cartList];
+  function handleCart(getCurrentItem) {
+    let cpyCartList = [...cart];
     const index = cpyCartList.findIndex(
       (item) => item.id === getCurrentItem.id
     );
@@ -120,11 +126,12 @@ export const Globalstate = ({ children }) => {
     if (index === -1) {
       cpyCartList.push(getCurrentItem);
       handleQuantityChange(1,getCurrentItem)
+      dispatch(addToCart(getCurrentItem));
     } else {
       cpyCartList.splice(index,1);
       handleQuantityChange(1,getCurrentItem,  true)
+      dispatch(removeToCart(getCurrentItem));
     }
-    
     setCartList(cpyCartList);
   }
 
@@ -144,7 +151,7 @@ export const Globalstate = ({ children }) => {
         getProducts,
         cartList,
         setCartList,
-        handleAddToCart,
+        handleCart,
         quantity,
         setQuantity,
         handleQuantityChange

@@ -1,11 +1,15 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import ProductCard from "../components/productCard";
 import GlobalContext from "../context/context";
 import { Link } from "react-router-dom";
 
 export default function Home() {
-  const { productList, loading, handleCategory } = useContext(GlobalContext);
+  const { productList, loading, handleCategory, getProducts } = useContext(GlobalContext);
 
+  useEffect(() => {
+    getProducts()
+  }, [])
+  
   if (loading) return <div>Loading...please wait!</div>;
 
   return (
